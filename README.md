@@ -2,23 +2,30 @@
 
 > This project was vibe coded in a couple of hours.
 
-A Python tool to overlay FIT data onto MP4 videos.
+A Python tool to overlay Garmin FIT data onto MP4 videos with real-time metrics and route visualization.
+
+## Overview
+
+**Garmin Overlay** is an open-source Python application that lets you add data overlays from your Garmin FIT files directly onto your running, cycling, or activity videos (MP4). Visualize heart rate, speed, cadence, elevation, distance, and your GPS route as a mini-map—perfect for sharing your workouts or races on YouTube, Strava, or social media.
 
 ## Features
 
-- Import FIT data from Garmin devices
-- Import video files of your run
+- Overlay Garmin FIT data onto MP4 videos
+- Import FIT files from Garmin devices or Garmin Connect
+- Import video files of your run, ride, or activity
 - Sync FIT data with video using time offset controls
-- Display various metrics:
+- Display real-time metrics:
   - Heart Rate (bpm)
   - Speed (km/h)
   - Cadence (steps per minute)
   - Elevation (meters)
   - Distance (kilometers)
-  - Mini-map showing your route
+  - Mini-map with GPS route
   - Time
-- Preview the overlays before exporting
-- Export to MP4 video with all overlays included
+- Preview overlays before exporting
+- Export to MP4 video with overlays for easy sharing
+- Simple, intuitive GUI (Graphical User Interface)
+- Fast setup with [uv](https://github.com/astral-sh/uv) and `pyproject.toml`
 
 ## Installation
 
@@ -62,8 +69,16 @@ A Python tool to overlay FIT data onto MP4 videos.
    uv run gpx_video_overlay.py
    ```
 
-   This will open the GUI application, which is straight forward.
+   This will open the GUI application, which is straightforward.
 
+3. **Export your video:**
+   - Use the GUI to preview overlays and export your final MP4 with data overlays.
+
+## Example Use Cases
+
+- Add Garmin data overlays to your running, cycling, or hiking videos
+- Create YouTube videos with live stats from your Garmin device
+- Share your activity videos with friends, coaches, or on Strava
 
 ## Tips for Best Results
 
@@ -89,4 +104,8 @@ A Python tool to overlay FIT data onto MP4 videos.
 
 Feel free to create issues or pull requests for improvements or bug fixes.
 
-If you find this project useful, you can [buy me a coffee](https://paypal.me/snedelkoski) on PayPal!
+If you find this project useful, you can [buy me a running gel](https://paypal.me/snedelkoski) on PayPal!
+
+---
+
+**Keywords:** Garmin overlay, FIT overlay, MP4 overlay, Garmin video overlay, Garmin data video, running video overlay, cycling video overlay, Garmin metrics, GPX overlay, activity video stats, Garmin Connect, Strava video, heart rate overlay, speed overlay, cadence overlay, elevation overlay, GPS route overlay, open source, Python, uv, pyproject.toml
