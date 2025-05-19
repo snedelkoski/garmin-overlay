@@ -1,5 +1,7 @@
 # Garmin Overlay
 
+> This project was vibe coded in a couple of hours.
+
 A Python tool to overlay FIT data onto MP4 videos.
 
 ## Features
@@ -15,7 +17,6 @@ A Python tool to overlay FIT data onto MP4 videos.
   - Distance (kilometers)
   - Mini-map showing your route
   - Time
-- Choose between text-only, gauge-only, or combined display formats
 - Preview the overlays before exporting
 - Export to MP4 video with all overlays included
 
@@ -55,16 +56,14 @@ A Python tool to overlay FIT data onto MP4 videos.
 1. **Prepare your files:**
    - Place your `.mp4` video and `.fit` data files in the project directory.
 
-2. **Run the overlay script:**
+2. **Run the overlay application:**
 
    ```bash
-   python gpx_video_overlay.py --video input.mp4 --data input.fit
+   uv run gpx_video_overlay.py
    ```
 
-   Replace `input.mp4` and `input.fit` with your actual filenames.
+   This will open the GUI application, which is straight forward.
 
-3. **Options:**
-   - Run `python gpx_video_overlay.py --help` to see all available options.
 
 ## Tips for Best Results
 
@@ -76,7 +75,7 @@ A Python tool to overlay FIT data onto MP4 videos.
 
 ## Troubleshooting
 
-- If no heart rate or cadence data appears, make sure your FIT file includes these metrics.
+- If no heart rate or cadence data appears, you can simply remove these from with the checklist in the UI.
 - If the mini-map doesn't appear, ensure your FIT file contains valid GPS coordinates.
 - For large videos, the export process may take some time.
 - If you encounter memory issues, try using a lower resolution video.
@@ -85,3 +84,9 @@ A Python tool to overlay FIT data onto MP4 videos.
 
 - Do **not** upload `.mp4` or `.fit` files to the repository.
 - See `.gitignore` for excluded files.
+
+## Contributing & Support
+
+Feel free to create issues or pull requests for improvements or bug fixes.
+
+If you find this project useful, you can [buy me a coffee](https://paypal.me/snedelkoski) on PayPal!
