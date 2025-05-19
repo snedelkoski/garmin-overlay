@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+venv/
+
+# Data and media files
+*.mp4
+*.fit
+
+# OS files
+.DS_Store
+Thumbs.db
