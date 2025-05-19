@@ -166,18 +166,26 @@ class GPXVideoOverlay:
         canvas.bind_all("<MouseWheel>", _on_mousewheel)
         
         # Metrics to display checkbuttons
-        metrics = ['Heart Rate', 'Speed', 'Cadence', 'Elevation', 'Distance', 'Map', 'Time',
-                   'Activity Type', 'Avg Heart Rate', 'Avg Speed']  # Retain only relevant metrics
+        metrics = ['Heart Rate', 'Speed', 'Cadence', 'Elevation', 'Distance', 'Time',
+                   'Activity Type', 'Avg Heart Rate', 'Avg Speed']  # Removed 'Map'
         self.metrics_vars = {}
-        
+
+        # --- FIX: Ensure overlay_settings and checkboxes are in sync ---
         for metric in metrics:
-            var = tk.BooleanVar(value=True)
-            self.metrics_vars[metric.lower().replace(' ', '_')] = var
+            key = metric.lower().replace(' ', '_')
+            # Set initial value from overlay_settings if present, else True
+            initial = self.overlay_settings.get(key, True)
+            var = tk.BooleanVar(value=initial)
+            self.metrics_vars[key] = var
+            # When the checkbox changes, update overlay_settings immediately
+            def make_callback(k):
+                return lambda *args: self._on_metric_checkbox_change(k)
+            var.trace_add('write', make_callback(key))
             ttk.Checkbutton(
-                settings_frame, text=metric, variable=var,
-                command=self._on_field_change
+                settings_frame, text=metric, variable=var
             ).pack(anchor=tk.W)
-        
+        # --------------------------------------------------------------
+
         # Add rotate 180° checkbox
         ttk.Checkbutton(
             settings_frame, text="Rotate 180°", variable=self.rotate_180,
@@ -257,6 +265,13 @@ class GPXVideoOverlay:
         """Mark fields as dirty and update settings for preview."""
         self._fields_dirty = True
         # If preview is playing, stop it to prevent crashes
+        if self.preview_playing:
+            self.stop_preview()
+
+    def _on_metric_checkbox_change(self, key):
+        """Update overlay_settings when a checkbox is toggled."""
+        self.overlay_settings[key] = self.metrics_vars[key].get()
+        self._fields_dirty = True
         if self.preview_playing:
             self.stop_preview()
 
